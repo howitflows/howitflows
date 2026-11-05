@@ -1,0 +1,69 @@
+---
+import '@howitflows/engine/styles.css';
+import '../styles/hub.css';
+import Base from '../layouts/Base.astro';
+import LostScene from '../components/LostScene';
+import { Icon, Logo } from '@howitflows/engine';
+
+const GITHUB = 'https://github.com/howitflows/howitflows';
+---
+
+<Base title="Page not found · HowItFlows" description="This page doesn't exist. Head back to the HowItFlows explorers." accent="var(--hue-coral)">
+  <meta slot="head" name="robots" content="noindex" />
+  <div class="hub">
+    <header class="topbar">
+      <Logo />
+      <nav class="hub-nav">
+        <a href="/#explorers">Explorers</a>
+        <a href={GITHUB} rel="noopener">GitHub</a>
+      </nav>
+      <div class="top-right">
+        <button class="switch" id="theme-switch" role="switch" aria-checked="false" aria-label="Dark mode">
+          <span class="knob">
+            <span class="i-sun"><Icon name="sun" size={13} stroke={2.2} /></span>
+            <span class="i-moon"><Icon name="moon" size={13} stroke={2.2} /></span>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <section class="lost">
+      <div class="lost-art card">
+        <LostScene />
+      </div>
+      <span class="chip"><i class="coral"></i> 404 · packet dropped</span>
+      <h1>This route goes <em>nowhere</em>.</h1>
+      <p class="lead">
+        The request left fine, but there's no page at this address. It may have moved, or the link has a typo. Here are a few places that do
+        answer:
+      </p>
+      <div class="cta">
+        <a class="pill ink lg" href="/"><Icon name="arrow" size={15} /> Back to the hub</a>
+        <a class="pill lg" href="/databases/postgres"><Icon name="play" size={15} /> Watch PostgreSQL work</a>
+      </div>
+    </section>
+
+    <footer class="hub-footer">
+      <Logo />
+      <p class="muted">
+        Found a broken link on the site? <a href={`${GITHUB}/issues`} rel="noopener">Tell us on GitHub</a>.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const sw = document.getElementById('theme-switch')!;
+    const sync = () => sw.setAttribute('aria-checked', String(document.documentElement.dataset.theme === 'dark'));
+    sync();
+    sw.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.setItem('hif.theme', JSON.stringify(next));
+      } catch {
+        /* storage unavailable */
+      }
+      sync();
+    });
+  </script>
+</Base>

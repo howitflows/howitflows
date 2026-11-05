@@ -85,3 +85,16 @@
   .stats dt { font-size: 22px; }
   .logo { font-size: 19px; }
 }
+
+/* 404 */
+.lost { max-width: 720px; margin: 0 auto; padding: 30px 0 10px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.lost-art { width: 100%; padding: 12px; margin-bottom: 26px; overflow: hidden; }
+.lost-scene { width: 100%; height: auto; display: block; }
+.lost h1 { font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; margin: 18px 0 14px; }
+.lost h1 em { font-style: normal; color: var(--hue-coral); }
+.lost .lead { margin-left: auto; margin-right: auto; }
+.lost .cta { justify-content: center; }
+.chip i.coral { background: var(--hue-coral); box-shadow: 0 0 0 4px color-mix(in srgb, var(--hue-coral) 22%, transparent); }
+.lost-fray { fill: none; stroke: var(--hue-coral); stroke-width: 2.5; stroke-linecap: round; }
+.lost-code { font: 800 30px/1 'Urbanist', sans-serif; fill: var(--hue-coral); letter-spacing: -0.02em; }
+.hub-footer a { color: var(--text); font-weight: 700; }

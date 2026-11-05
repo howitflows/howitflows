@@ -13,6 +13,12 @@ const title = `How ${db.name} works · Databases · HowItFlows`;
 const description = `Watch ${db.name} talk on the wire: connect, authenticate, query and replicate, step by step. Plus ready-to-run ${db.name} code in 7 languages.`;
 ---
 
-<Base title={title} description={description} accent={CATEGORY_VAR[db.group]}>
+<Base
+  title={title}
+  description={description}
+  accent={CATEGORY_VAR[db.group]}
+  image={`/og/databases/${db.id}.png`}
+  imageAlt={`How ${db.name} works: an animated diagram of messages between your app and ${db.name}`}
+>
   <DatabasesExplorer client:load initialId={db.id} />
 </Base>

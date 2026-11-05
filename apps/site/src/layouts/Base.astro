@@ -8,10 +8,20 @@ interface Props {
   description: string;
   /** CSS colour for --accent, so the pre-rendered page already has the right accent. */
   accent?: string;
+  /** Social preview image (1200×630 PNG), site-relative. */
+  image?: string;
+  imageAlt?: string;
 }
 
-const { title, description, accent = 'var(--hue-blue)' } = Astro.props;
+const {
+  title,
+  description,
+  accent = 'var(--hue-blue)',
+  image = '/og/home.png',
+  imageAlt = 'HowItFlows: animated explorers that show how data and cloud systems work',
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
 ---
 
 <!doctype html>
@@ -23,12 +33,21 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={favicon} />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="HowItFlows" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+    <slot name="head" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
