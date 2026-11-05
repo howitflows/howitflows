@@ -36,7 +36,15 @@ Connect the GitHub repository in Cloudflare Pages with these settings:
 | Framework preset | Astro |
 | Build command | `npm run build` |
 | Build output directory | `apps/site/dist` |
-| Environment variable | `NODE_VERSION` = `22` (or newer) |
+| Environment variable | `NODE_VERSION` = `26.13.0` (Production and Preview) |
+
+**Node version.** Use the latest patch of an active LTS line: Node 26 (current LTS) or Node 24. Astro needs at least 22.23.4.
+Node.js ships security releases regularly, so keep this value current:
+
+- The [October 2026 security releases](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases) were fixed in 22.23.4, 24.22.1 and 26.12.1. `26.13.0` includes those fixes.
+- When a new one is published on [Node.js security releases](https://nodejs.org/en/blog/vulnerability), update `NODE_VERSION` here and in Cloudflare, and update Node on your machine too.
+
+Changing the variable does not rebuild the site. It applies from the next deployment, so push a commit or use **Retry deployment** on the latest one.
 
 Every pull request gets a preview URL. Add `howitflows.dev` as a custom domain.
 
