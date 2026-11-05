@@ -3,3 +3,4 @@ dist
 .astro
 *.tsbuildinfo
 .DS_Store
+TODO.md
