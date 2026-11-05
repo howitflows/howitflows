@@ -1,4 +1,5 @@
 ---
+import SocialLinks from '../components/SocialLinks.astro';
 import '@howitflows/engine/styles.css';
 import '../styles/hub.css';
 import Base from '../layouts/Base.astro';
@@ -48,6 +49,7 @@ const GITHUB = 'https://github.com/howitflows/howitflows';
       <p class="muted">
         Found a broken link on the site? <a href={`${GITHUB}/issues`} rel="noopener">Tell us on GitHub</a>.
       </p>
+      <SocialLinks />
     </footer>
   </div>
 

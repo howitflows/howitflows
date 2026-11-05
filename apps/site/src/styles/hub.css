@@ -98,3 +98,6 @@
 .lost-fray { fill: none; stroke: var(--hue-coral); stroke-width: 2.5; stroke-linecap: round; }
 .lost-code { font: 800 30px/1 'Urbanist', sans-serif; fill: var(--hue-coral); letter-spacing: -0.02em; }
 .hub-footer a { color: var(--text); font-weight: 700; }
+.socials { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; }
+.hub-footer .socials a { color: var(--muted); text-decoration: none; }
+.hub-footer .socials a:hover, .hub-footer .socials a:focus-visible { color: var(--text); text-decoration: underline; }

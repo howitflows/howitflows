@@ -1,0 +1,14 @@
+---
+// Footer links to the project's accounts.
+const LINKS = [
+  { label: 'GitHub', href: 'https://github.com/howitflows' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@howitflowsdev' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/146948132' },
+  { label: 'X', href: 'https://x.com/howitflowsdev' },
+  { label: 'Reddit', href: 'https://www.reddit.com/user/howitflows/' },
+];
+---
+<nav class="socials" aria-label="HowItFlows elsewhere">
+  {LINKS.map((l) => <a href={l.href} target="_blank" rel="noopener noreferrer me">{l.label}</a>)}
+  <a href="mailto:hello@howitflows.dev">hello@howitflows.dev</a>
+</nav>

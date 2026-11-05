@@ -1,4 +1,5 @@
 ---
+import SocialLinks from '../components/SocialLinks.astro';
 import '@howitflows/engine/styles.css';
 import '../styles/hub.css';
 import Base from '../layouts/Base.astro';
@@ -153,6 +154,7 @@ const soon = TOPICS.filter((t) => !t.href);
       <p class="muted">
         The place for visual learners. Code under MIT, content under CC BY 4.0. Diagrams are illustrative; sizes and timings are approximate.
       </p>
+      <SocialLinks />
     </footer>
   </div>
 
