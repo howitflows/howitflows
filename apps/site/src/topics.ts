@@ -11,7 +11,7 @@ export interface Topic {
   href?: string;
 }
 
-/** The hub catalogue. Add an entry here when you start a new explorer (see CONTRIBUTING.md). */
+/** The hub catalogue. Add an entry here when you start a new explorer. */
 export const TOPICS: Topic[] = [
   {
     id: 'databases',

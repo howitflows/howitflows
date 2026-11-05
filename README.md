@@ -25,8 +25,6 @@ The repo is a monorepo:
 - `explorers/*`: one package per topic.
 - `apps/site`: the Astro site.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) to add a database or start a new explorer.
-
 ## Deploy (Cloudflare Pages)
 
 Connect the GitHub repository in Cloudflare Pages with these settings:
