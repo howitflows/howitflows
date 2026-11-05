@@ -1,0 +1,16 @@
+{
+  "name": "@howitflows/engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The explorer engine: topology, flow, table, timeline, inspector and app shell.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css"
+  },
+  "dependencies": {
+    "@howitflows/art": "*",
+    "highlight.js": "11.10.0"
+  },
+  "peerDependencies": { "react": "^18 || ^19" }
+}

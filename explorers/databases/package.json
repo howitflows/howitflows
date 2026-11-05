@@ -1,0 +1,15 @@
+{
+  "name": "@howitflows/databases",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Databases explorer: 10 databases, wire flows and a snippet studio in 7 languages.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./explorer": "./src/DatabasesExplorer.tsx"
+  },
+  "dependencies": {
+    "@howitflows/engine": "*"
+  },
+  "peerDependencies": { "react": "^18 || ^19" }
+}

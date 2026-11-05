@@ -1,0 +1,18 @@
+---
+import '@howitflows/engine/styles.css';
+import Base from '../../layouts/Base.astro';
+import DatabasesExplorer from '@howitflows/databases/explorer';
+import { CATEGORY_VAR, DATABASES } from '@howitflows/databases';
+
+export function getStaticPaths() {
+  return DATABASES.map((db) => ({ params: { id: db.id } }));
+}
+
+const db = DATABASES.find((d) => d.id === Astro.params.id)!;
+const title = `How ${db.name} works · Databases · HowItFlows`;
+const description = `Watch ${db.name} talk on the wire: connect, authenticate, query and replicate, step by step. Plus ready-to-run ${db.name} code in 7 languages.`;
+---
+
+<Base title={title} description={description} accent={CATEGORY_VAR[db.group]}>
+  <DatabasesExplorer client:load initialId={db.id} />
+</Base>

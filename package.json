@@ -1,0 +1,20 @@
+{
+  "name": "howitflows",
+  "private": true,
+  "type": "module",
+  "description": "HowItFlows: the place for visual learners. Animated explorers that show how data and cloud systems really work.",
+  "license": "MIT",
+  "workspaces": ["packages/*", "explorers/*", "apps/*"],
+  "scripts": {
+    "dev": "npm run dev -w @howitflows/site",
+    "build": "npm run typecheck && npm run build -w @howitflows/site",
+    "preview": "npm run preview -w @howitflows/site",
+    "typecheck": "tsc -p tsconfig.json && npm run check -w @howitflows/site",
+    "new-explorer": "node scripts/new-explorer.mjs"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "typescript": "5.6.3"
+  }
+}

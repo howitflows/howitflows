@@ -1,0 +1,75 @@
+/* Shared UI kit: reset, primitives, top bar, theme switch. Requires tokens.css. */
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.25s, color 0.25s;
+}
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+button:disabled { opacity: 0.35; cursor: not-allowed; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: var(--mono); font-size: 0.92em; }
+.muted { color: var(--muted); }
+.pad { padding: 12px; }
+
+.app { max-width: 1480px; margin: 0 auto; padding: 18px 22px 40px; }
+
+/* ---------- primitives */
+.pill {
+  display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 16px;
+  border-radius: 999px; background: var(--surface); border: 1px solid var(--line);
+  font-weight: 600; font-size: 13.5px; color: var(--text); white-space: nowrap; text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.pill:hover { border-color: var(--dim); }
+.pill.ink { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
+.pill.sm { height: 30px; padding: 0 12px; font-size: 12.5px; }
+.pill.off { opacity: 0.4; text-decoration: line-through; }
+.round {
+  width: 36px; height: 36px; border-radius: 50%; display: inline-grid; place-items: center;
+  background: var(--surface); border: 1px solid var(--line); color: var(--text); flex: none;
+  transition: transform 0.12s, background 0.15s;
+}
+.round:hover:not(:disabled) { transform: scale(1.06); }
+.round.big { width: 44px; height: 44px; }
+.round.sm { width: 30px; height: 30px; }
+.round.ink { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
+.round.light { background: var(--hero-text); border-color: transparent; color: var(--hero); }
+.card { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow); border: 1px solid var(--line); }
+.eyebrow { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.cdot, .legend i, .hero-chip i, .dbrow small i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
+
+/* ---------- top bar */
+.topbar { display: flex; align-items: center; gap: 18px; padding-bottom: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; flex: none; }
+.logo { display: inline-flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-size: 22px; font-weight: 800; letter-spacing: -0.03em; }
+.logo-mark { flex: none; display: block; }
+.logo-word b {
+  font-weight: 800; color: var(--accent);
+  background: linear-gradient(90deg, var(--hue-blue), var(--hue-violet)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.crumb { padding-left: 12px; border-left: 1.5px solid var(--line); color: var(--muted); font-weight: 700; font-size: 14px; white-space: nowrap; }
+.cats { display: flex; gap: 6px; flex: 1; justify-content: center; flex-wrap: wrap; }
+.top-right { display: flex; align-items: center; gap: 10px; }
+.ring {
+  --p: 0; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; flex: none;
+  background: conic-gradient(var(--accent) calc(var(--p) * 1%), var(--surface-3) 0);
+}
+.ring span { width: 30px; height: 30px; border-radius: 50%; background: var(--bg); display: grid; place-items: center; font-size: 10px; font-weight: 700; }
+.switch { width: 62px; height: 34px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); position: relative; flex: none; }
+.switch .knob {
+  position: absolute; top: 3px; left: 3px; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--hue-amber); color: #fff; display: grid; place-items: center; transition: transform 0.25s, background 0.25s;
+}
+.switch[aria-checked='true'] .knob { transform: translateX(28px); background: var(--hue-violet); color: var(--on-hue); }
+
+
+.footer a { color: inherit; font-weight: 700; }

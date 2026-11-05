@@ -1,0 +1,53 @@
+---
+import '@howitflows/brand/tokens.css';
+import '@howitflows/brand/base.css';
+import favicon from '@howitflows/brand/favicon.svg?url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** CSS colour for --accent, so the pre-rendered page already has the right accent. */
+  accent?: string;
+}
+
+const { title, description, accent = 'var(--hue-blue)' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en" style={`--accent: ${accent}`}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={favicon} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="HowItFlows" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Urbanist:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- set the theme before first paint: saved choice, else the OS preference -->
+    <script is:inline>
+      (function () {
+        var t = null;
+        try {
+          t = JSON.parse(localStorage.getItem('hif.theme'));
+        } catch (e) {}
+        if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

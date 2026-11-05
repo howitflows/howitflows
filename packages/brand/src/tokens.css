@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Palette
+   - Neutrals: soft grey canvas, white cards, one near-black "ink" for emphasis
+   - Six hues, each with a job:
+       categories  Relational=blue · Document=green · Key-Value=coral
+                   Wide-Column=amber · Graph=violet · Search=teal
+       messages    connect=blue · auth=green · query=amber · result=violet · replication=coral
+   - --accent follows the selected database's category hue (set from JS)
+   ========================================================================== */
+:root,
+:root[data-theme='light'] {
+  --bg: #eceef2;
+  --surface: #ffffff;
+  --surface-2: #f5f6f8;
+  --surface-3: #eceef2;
+  --line: #e1e4ea;
+  --text: #14161b;
+  --muted: #687080;
+  --dim: #a1a7b3;
+  --ink: #17191e;
+  --on-ink: #ffffff;
+  --hero: #1c1f25;
+  --hero-text: #ffffff;
+  --hero-muted: #a3a9b6;
+  --code-bg: #15171c;
+  --code-head: #1d2026;
+  --code-line: #262a32;
+  --shadow: 0 1px 2px rgba(20, 22, 27, 0.04), 0 8px 24px rgba(20, 22, 27, 0.06);
+
+  --hue-blue: #3d63f5;
+  --hue-green: #11a27a;
+  --hue-coral: #f05d48;
+  --hue-amber: #e3960b;
+  --hue-violet: #8350ef;
+  --hue-teal: #0b9caf;
+  --on-hue: #ffffff;
+
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  --bg: #0d0f13;
+  --surface: #161920;
+  --surface-2: #1c2028;
+  --surface-3: #242934;
+  --line: #2a303b;
+  --text: #eceff4;
+  --muted: #9ba3b2;
+  --dim: #626b7c;
+  --ink: #eceff4;
+  --on-ink: #111318;
+  --hero: #222733;
+  --hero-text: #f3f5f9;
+  --hero-muted: #9aa2b2;
+  --code-bg: #0b0d11;
+  --code-head: #12151b;
+  --code-line: #1d2129;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+
+  --hue-blue: #7490ff;
+  --hue-green: #3fcb9f;
+  --hue-coral: #ff806c;
+  --hue-amber: #f5b547;
+  --hue-violet: #a888ff;
+  --hue-teal: #3ac6d8;
+  --on-hue: #0d0f13;
+
+  color-scheme: dark;
+}
+:root {
+  --accent: var(--hue-blue);
+  --k-connect: var(--hue-blue);
+  --k-auth: var(--hue-green);
+  --k-query: var(--hue-amber);
+  --k-result: var(--hue-violet);
+  --k-replication: var(--hue-coral);
+  --sans: 'Urbanist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --r-lg: 26px;
+  --r-md: 18px;
+  --r-sm: 12px;
+}

@@ -1,0 +1,185 @@
+---
+import '@howitflows/engine/styles.css';
+import '../styles/hub.css';
+import Base from '../layouts/Base.astro';
+import HeroScene from '../components/HeroScene';
+import TopicArt from '../components/TopicArt';
+import { Icon, Logo } from '@howitflows/engine';
+import { DATABASES } from '@howitflows/databases';
+import { LANGS } from '@howitflows/databases';
+import { TOPICS } from '../topics';
+
+const GITHUB = 'https://github.com/howitflows';
+const live = TOPICS.filter((t) => t.href);
+const soon = TOPICS.filter((t) => !t.href);
+---
+
+<Base
+  title="HowItFlows · The place for visual learners"
+  description="Animated, open-source explorers that show how databases, streaming, cloud and data systems really work: every message, hop and handshake."
+>
+  <div class="hub">
+    <header class="topbar">
+      <Logo />
+      <nav class="hub-nav">
+        <a href="#explorers">Explorers</a>
+        <a href="#how">How it works</a>
+        <a href={GITHUB} rel="noopener">GitHub</a>
+      </nav>
+      <div class="top-right">
+        <button class="switch" id="theme-switch" role="switch" aria-checked="false" aria-label="Dark mode">
+          <span class="knob">
+            <span class="i-sun"><Icon name="sun" size={13} stroke={2.2} /></span>
+            <span class="i-moon"><Icon name="moon" size={13} stroke={2.2} /></span>
+          </span>
+        </button>
+      </div>
+    </header>
+
+    <section class="hub-hero">
+      <div class="hub-hero-text">
+        <span class="chip"><i></i> Open source · free forever</span>
+        <h1>See how systems <em>really</em> work.</h1>
+        <p class="lead">
+          <b>HowItFlows is the place for visual learners.</b> Animated explorers show every message, hop and handshake inside the data and
+          cloud systems you use every day, step by step, with working code to try yourself.
+        </p>
+        <div class="cta">
+          <a class="pill ink lg" href="/databases/postgres"><Icon name="play" size={15} /> Start with databases</a>
+          <a class="pill lg" href={GITHUB} rel="noopener"><Icon name="code" size={15} /> Contribute</a>
+        </div>
+        <dl class="stats">
+          <div><dt>{DATABASES.length}</dt><dd>databases</dd></div>
+          <div><dt>{LANGS.length}</dt><dd>languages</dd></div>
+          <div><dt>550+</dt><dd>code snippets</dd></div>
+          <div><dt>{TOPICS.length}</dt><dd>topics planned</dd></div>
+        </dl>
+      </div>
+      <div class="hub-hero-art card">
+        <HeroScene />
+      </div>
+    </section>
+
+    <section id="explorers" class="hub-section">
+      <div class="section-h">
+        <span class="eyebrow">Explorers</span>
+        <h2>Pick a system and press play</h2>
+      </div>
+      <div class="topics">
+        {
+          live.map((t) => (
+            <a class="topic card live" href={t.href} style={`--t: var(--hue-${t.hue})`}>
+              <div class="topic-top">
+                <TopicArt icon={t.art} live />
+                <span class="status live">Live</span>
+              </div>
+              <h3>{t.title}</h3>
+              <p>{t.blurb}</p>
+              <div class="avatars">
+                {DATABASES.map((d) => (
+                  <span class="avatar sm" style={`background:${d.color}`} title={d.name}>
+                    {d.glyph}
+                  </span>
+                ))}
+              </div>
+              <div class="topic-foot">
+                <span class="muted" data-progress={t.id} data-total={DATABASES.length}>
+                  {DATABASES.length} explorers
+                </span>
+                <span class="go">
+                  Open <Icon name="arrow" size={14} stroke={2.2} />
+                </span>
+              </div>
+            </a>
+          ))
+        }
+        {
+          soon.map((t) => (
+            <div class="topic card" style={`--t: var(--hue-${t.hue})`}>
+              <div class="topic-top">
+                <TopicArt icon={t.art} live={false} />
+                <span class="status">Coming soon</span>
+              </div>
+              <h3>{t.title}</h3>
+              <p>{t.blurb}</p>
+              <div class="tags">
+                {t.examples.map((e) => (
+                  <span>{e}</span>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section id="how" class="hub-section">
+      <div class="section-h">
+        <span class="eyebrow">How it works</span>
+        <h2>Watch it, step through it, build it</h2>
+      </div>
+      <div class="how">
+        <div class="how-card card" style="--t: var(--hue-blue)">
+          <span class="how-ico"><Icon name="topo" size={20} /></span>
+          <h3>Watch</h3>
+          <p>An animated topology shows each packet travelling between your app, servers, disks and replicas.</p>
+        </div>
+        <div class="how-card card" style="--t: var(--hue-amber)">
+          <span class="how-ico"><Icon name="flow" size={20} /></span>
+          <h3>Step through</h3>
+          <p>Scrub the timeline message by message. Every step explains what happens and why, with the real protocol details.</p>
+        </div>
+        <div class="how-card card" style="--t: var(--hue-green)">
+          <span class="how-ico"><Icon name="code" size={20} /></span>
+          <h3>Build</h3>
+          <p>Generate working code for your own connection settings: connect, create a schema, seed data and run CRUD, in 7 languages.</p>
+        </div>
+      </div>
+      <div class="next card">
+        <div>
+          <span class="eyebrow">Coming next</span>
+          <h3>Break things on purpose</h3>
+          <p>
+            <b>Failure injection:</b> kill a node or cut the network and watch the system fail over. <b>Cross-links:</b> follow one write
+            from Postgres, through change data capture and Kafka, all the way to your warehouse.
+          </p>
+        </div>
+        <a class="pill" href={GITHUB} rel="noopener">Follow on GitHub <Icon name="arrow" size={14} /></a>
+      </div>
+    </section>
+
+    <footer class="hub-footer">
+      <Logo />
+      <p class="muted">
+        The place for visual learners. Code under MIT, content under CC BY 4.0. Diagrams are illustrative; sizes and timings are approximate.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const sw = document.getElementById('theme-switch')!;
+    const sync = () => sw.setAttribute('aria-checked', String(document.documentElement.dataset.theme === 'dark'));
+    sync();
+    sw.addEventListener('click', () => {
+      const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try {
+        localStorage.setItem('hif.theme', JSON.stringify(next));
+      } catch {
+        /* storage unavailable */
+      }
+      sync();
+    });
+
+    // "3 of 10 explored", from the explorer's saved progress
+    document.querySelectorAll<HTMLElement>('[data-progress]').forEach((el) => {
+      try {
+        const p = JSON.parse(localStorage.getItem(`hif.${el.dataset.progress}.progress`) ?? '{}') as Record<string, string>;
+        const done = Object.values(p).filter((v) => v === 'done').length;
+        if (done > 0) el.textContent = `${done} of ${el.dataset.total} explored`;
+      } catch {
+        /* storage unavailable */
+      }
+    });
+  </script>
+</Base>

@@ -1,0 +1,12 @@
+{
+  "name": "@howitflows/brand",
+  "version": "0.1.0",
+  "private": true,
+  "description": "HowItFlows design tokens, base UI kit, logo and favicon.",
+  "exports": {
+    "./tokens.css": "./src/tokens.css",
+    "./base.css": "./src/base.css",
+    "./logo.svg": "./src/logo.svg",
+    "./favicon.svg": "./src/favicon.svg"
+  }
+}
