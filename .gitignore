@@ -14,3 +14,6 @@ apps/videos/*/.media/
 apps/videos/*/.thumbnails/
 apps/videos/*/.waveform-cache/
 apps/videos/*/assets/sfx/old/
+
+# personal Claude Code settings
+.claude/settings.local.json
