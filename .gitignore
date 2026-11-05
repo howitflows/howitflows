@@ -5,3 +5,12 @@ dist
 .DS_Store
 TODO.md
 STRATEGY.md
+
+# video projects: keep sources, ignore renders, caches and the raw media library
+apps/videos/*/renders/
+apps/videos/*/out/
+apps/videos/*/.hyperframes/
+apps/videos/*/.media/
+apps/videos/*/.thumbnails/
+apps/videos/*/.waveform-cache/
+apps/videos/*/assets/sfx/old/
